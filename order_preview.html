@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- <meta name="viewport" content="width=device-width, height=device-height,initial-scale=0.74,
+ minimum-scale=0.74,maximum-scale=0.74, target-densitydpi=device-dpi"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no" /> 
+<title>Amazing Hotel</title>
+<style>
+body{
+    margin-top:0px;
+  
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-color:#ccc;
+    background-size: cover;
+}
+* {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.range_test {
+  /* Default */
+  display: none;
+  font-weight: bold;
+}
+
+html.range_0 #p_0 {
+  /* Style overrides for: 0px to 760px */
+  display: block;
+}
+
+html.range_1 #p_1 {
+  /* Style overrides for: 760px to 980px */
+  display: block;
+}
+
+html.range_2 #p_2 {
+  /* Style overrides for: 980px to 1280px */
+  display: block;
+}
+
+html.range_3 #p_3 {
+  /* Style overrides for: 1280px to 1600px */
+  display: block;
+}
+
+html.range_4 #p_4 {
+  /* Style overrides for: 1600px to 1920px */
+  display: block;
+}
+
+html.range_5 #p_5 {
+  /* Style overrides for: above 1920px */
+  display: block;
+}
+</style>
+
+<script>
+// Called by Adapt.js
+function myCallback(i, width) {
+  // Alias HTML tag.
+  var html = document.documentElement;
+
+  // Find all instances of range_NUMBER and kill 'em.
+  html.className = html.className.replace(/(\s+)?range_\d/g, '');
+
+  // Check for valid range.
+  if (i > -1) {
+    // Add class="range_NUMBER"
+    html.className += ' range_' + i;
+  }
+
+  // Note: Not making use of width here, but I'm sure
+  // you could think of an interesting way to use it.
+}
+
+// Edit to suit your needs.
+var ADAPT_CONFIG = {
+    // Where is your CSS?
+    path: 'assets/css/',
+  dynamic: true,
+  
+  // false = Only run once, when page first loads.
+  // true = Change on window resize and page tilt.
+  
+  dynamic: true,
+  // Optional callback... myCallback(i, width)
+  callback: myCallback,
+
+  // First range entry is the minimum.
+  // Last range entry is the maximum.
+  // Separate ranges by "to" keyword.
+  range: [
+  '0px    to 760px  = mobile.css',
+  '760px  to 980px  = mobile.css',
+  '980px  to 1280px = 960.css',
+  '1280px to 1600px = 1200.css',
+  '1600px to 1920px = 1560.css',
+  '1940px to 2540px = 1920.css',
+  '2540px           = 2520.css'
+  ]
+};
+</script>
+<script src="assets/js/adapt.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link media="Screen" href="assets/css/styles.css" type="text/css" rel="stylesheet" /> 
+<link media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="mobile.css" type="text/css" rel="stylesheet" /> 
+<!--[if IEMobile]>
+<link rel="stylesheet" type="text/css" href="mobile.css" media="screen" />
+<![endif]-->
+</head>
+<body>
+    
+<div class="container_12">
+    <div class="grid_12"  id='two_tab_menu'>
+        <ul>
+           <li id="back"><a href='resturant_menu.html'><span>back</span></a></li>
+           <li id="h_service"><a href='dessert.html'><span>Order Preview</span></a></li>
+        </ul>
+     </div>
+     
+     <div class="grid_12" style="text-align:center;background-color:#449c50; height:50px;margin:0">
+         <div style="height:12px"></div>
+         <span style="color:white; font-size:20px;margin-top:15px !important "> ADD MORE ITEMS </span>
+     </div>
+
+     <div class="grid_12 order_table">
+         <table>
+             <tr>
+                 <td class="grid_4">NAME</td>
+                 <td class="grid_4">QTY</td>
+                 <td class="grid_4">PRICE</td>
+             </tr>
+             <tr>
+                 <td>Ice Coffee</br>
+                     *Less sugar</td>
+                 <td>1</td>
+                 <td>1500</td>
+             </tr>
+             <tr>
+                 <td>Sandwish</br>
+                     *vegetables</td>
+                 <td>1</td>
+                 <td>7500</td>
+             </tr>
+             <tr>
+                 <td>Black Coffee</td>
+                 <td>1</td>
+                 <td>3500</td>
+             </tr>
+         </table>
+                        
+     </div>
+
+     <div style="float:right;bottom:10px">
+         <strong>TOTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12500</strong>&nbsp;&nbsp;&nbsp;</div>
+     </div>
+ <div class="grid_12"  id="footer">
+<strong id ="footer_text"><a href='#' onclick='execute_order_items()'>Place an Order</a></strong>
+ </div>
+</body>
+</html>
+
+
+<script type='text/javascript'>
+function execute_order_items(){
+    console.log("working")
+	var waiter_id = 3;		
+	var order_type = "dining";
+	var table_id = 2;
+	var displayOverlay = false;
+    var form_data = "order_item[][id]=1&order_item[][options]=''&order_item[][qty]=1&order_item[][parcel]='false'&";
+	
+        add_form_data = form_data  + "&current_login_user_id=" + waiter_id + "&order_type=" + order_type + "&table_id=" + table_id;
+     
+
+            $.ajax({
+               type: 'POST',
+                url: 'http://192.168.1.104:3000/api/order/submit_order',       
+                data: add_form_data,
+                dataType: 'json',
+                cache: false,
+                             
+                                               
+               success: function(data){
+                    alert("Success!")
+                   
+               },
+                                
+                failure: function(){
+                    alert("Fail!");                            
+                },
+                        
+                error: function(){
+                    // // console.log(data.id);
+                    // console.log('error')
+                                    
+                }
+            });
+            
+            alert("Order is submitted to Kitchen HAVE A WONDRENFULL DAY!");
+
+}
+
+	
+</script>

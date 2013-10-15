@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- <meta name="viewport" content="width=device-width, height=device-height,initial-scale=0.74,
+ minimum-scale=0.74,maximum-scale=0.74, target-densitydpi=device-dpi"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=no" /> 
+<title>Amazing Hotel</title>
+<style>
+body{
+    margin-top:0px;
+    background: url(assets/images/Desserts.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-color:#ccc;
+    background-size: cover;
+}
+* {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.range_test {
+  /* Default */
+  display: none;
+  font-weight: bold;
+}
+
+html.range_0 #p_0 {
+  /* Style overrides for: 0px to 760px */
+  display: block;
+}
+
+html.range_1 #p_1 {
+  /* Style overrides for: 760px to 980px */
+  display: block;
+}
+
+html.range_2 #p_2 {
+  /* Style overrides for: 980px to 1280px */
+  display: block;
+}
+
+html.range_3 #p_3 {
+  /* Style overrides for: 1280px to 1600px */
+  display: block;
+}
+
+html.range_4 #p_4 {
+  /* Style overrides for: 1600px to 1920px */
+  display: block;
+}
+
+html.range_5 #p_5 {
+  /* Style overrides for: above 1920px */
+  display: block;
+}
+</style>
+
+<script>
+// Called by Adapt.js
+function myCallback(i, width) {
+  // Alias HTML tag.
+  var html = document.documentElement;
+
+  // Find all instances of range_NUMBER and kill 'em.
+  html.className = html.className.replace(/(\s+)?range_\d/g, '');
+
+  // Check for valid range.
+  if (i > -1) {
+    // Add class="range_NUMBER"
+    html.className += ' range_' + i;
+  }
+
+  // Note: Not making use of width here, but I'm sure
+  // you could think of an interesting way to use it.
+}
+
+// Edit to suit your needs.
+var ADAPT_CONFIG = {
+    // Where is your CSS?
+    path: 'assets/css/',
+  dynamic: true,
+  
+  // false = Only run once, when page first loads.
+  // true = Change on window resize and page tilt.
+  
+  dynamic: true,
+  // Optional callback... myCallback(i, width)
+  callback: myCallback,
+
+  // First range entry is the minimum.
+  // Last range entry is the maximum.
+  // Separate ranges by "to" keyword.
+  range: [
+  '0px    to 760px  = mobile.css',
+  '760px  to 980px  = mobile.css',
+  '980px  to 1280px = 960.css',
+  '1280px to 1600px = 1200.css',
+  '1600px to 1920px = 1560.css',
+  '1940px to 2540px = 1920.css',
+  '2540px           = 2520.css'
+  ]
+};
+</script>
+<script src="assets/js/adapt.min.js"></script>
+<link rel="stylesheet" href="assets/css/style.css" />
+<link media="Screen" href="assets/css/styles.css" type="text/css" rel="stylesheet" /> 
+<link media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" href="mobile.css" type="text/css" rel="stylesheet" /> 
+<!--[if IEMobile]>
+<link rel="stylesheet" type="text/css" href="mobile.css" media="screen" />
+<![endif]-->
+</head>
+<body>
+    
+<div class="container_12">
+    <div class="grid_12"  id='two_tab_menu'>
+        <ul>
+           <li id="back"><a href='resturant_menu.html'><span>back</span></a></li>
+           <li id="h_service"><a href='dessert.html'><span>Desserts</span></a></li>
+        </ul>
+     </div>
+
+     <div class="grid_12" id="content_1" >
+        <strong id="menu_header"> <span> Cake and Dessert</span></strong>
+       <div class= 'menu_content'>
+         <div id='content_text'>
+        A Buffalo wing, Buffalo chicken wing, <br/>
+        hot wing or wing is a chicken wing section <br/>
+        that is generally deep-fried, unbreaded, <br/>
+        and coated in a sauce of vinegar-based <br/>
+        cayenne pepper hot sauce and butter in the kitchen.
+
+         </div>
+     </div>
+  </div>
+      <div style="background-color:green; width:150px; height:40px;position:relative;
+      float:right; margin-top:5px; margin-right:10px">
+          <div style="height:10px;text-align:center;"></div>
+           <span id="add_order" > <a href="#" onclick='add_order()'>+ Add to order</a></span>
+      </div>
+
+  
+  </div>
+  <div class="grid_12"  id="footer">
+ <strong id ="footer_text"><a href="order_preview.html">Preview Order</a></strong>
+  </div>
+</body>
+</html>
+
+
+<script>
+function add_order(){
+    alert("Menu added to Order!");
+}
+</script>
